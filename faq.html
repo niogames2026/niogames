@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Perguntas Frequentes</title>
+    <style>
+        :root {
+            --cor-primaria: #1a1a2e;
+            --cor-destaque: #e94560;
+            --cor-fundo: #f0f2f5;
+            --cor-texto: #333333;
+            --cor-texto-claro: #666666;
+            --cor-branco: #ffffff;
+            --cor-cinza: #e8ecf1;
+            --sombra: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--cor-fundo); color: var(--cor-texto); }
+        
+        header { background-color: var(--cor-branco); padding: 12px 0; box-shadow: var(--sombra); position: sticky; top: 0; z-index: 100; }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo { font-size: 20px; font-weight: 700; color: var(--cor-primaria); text-decoration: none; }
+        nav ul { display: flex; list-style: none; gap: 25px; }
+        nav a { color: var(--cor-texto); text-decoration: none; font-weight: 500; font-size: 14px; }
+        nav a:hover, nav a.active { color: var(--cor-destaque); }
+
+        .banner-interna { background: linear-gradient(135deg, var(--cor-primaria) 0%, #16213e 100%); color: white; padding: 60px 20px; text-align: center; }
+
+        .faq-page-container { max-width: 800px; margin: 50px auto; padding: 0 20px; }
+        .faq-item { margin-bottom: 15px; border: 1px solid var(--cor-cinza); border-radius: 8px; overflow: hidden; background-color: var(--cor-branco); }
+        .faq-pergunta { padding: 18px; background-color: #fafafa; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; color: var(--cor-primaria); }
+        .faq-resposta { padding: 0 18px; max-height: 0; overflow: hidden; transition: all 0.3s ease-out; color: var(--cor-texto-claro); font-size: 15px; }
+        .faq-item.ativo .faq-resposta { padding: 18px; max-height: 300px; }
+        .faq-item.ativo .faq-icon { transform: rotate(180deg); }
+        .faq-icon { transition: transform 0.3s; }
+
+        footer { background-color: var(--cor-primaria); color: var(--cor-branco); padding: 40px 20px 20px; margin-top: 60px; }
+        .footer-container { max-width: 1200px; margin: 0 auto 30px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo"><span>Nio Games</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="banner-interna">
+        <h1>Central de Ajuda & Perguntas Frequentes</h1>
+        <p>Tire suas dúvidas operacionais de forma rápida sobre nossos procedimentos</p>
+    </div>
+
+    <section class="faq-page-container">
+        <div class="faq-item">
+            <div class="faq-pergunta"><span>Vocês cobram valor de orçamento caso eu desista?</span><span class="faq-icon">▼</span></div>
+            <div class="faq-resposta">Não! Nossos orçamentos para a grande maioria de consoles e notebooks são totalmente sem compromisso. Você só paga se aprovar e o reparo for realizado.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-pergunta"><span>Quanto tempo demora o conserto do equipamento?</span><span class="faq-icon">▼</span></div>
+            <div class="faq-resposta">O prazo varia conforme o defeito. Trocas de telas de notebooks e limpezas preventivas costumam levar de 24h a 48h. Problemas complexos de placa-mãe demandam testes que podem levar de 3 a 5 dias úteis.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-pergunta"><span>Posso enviar meu aparelho por Motoboy ou Correios?</span><span class="faq-icon">▼</span></div>
+            <div class="faq-resposta">Sim! Atendemos clientes de todo o Brasil que enviam via Sedex e moradores da Grande SP que preferem mandar por aplicativos de entrega. Entre em contato pelo WhatsApp para gerarmos a ficha de recebimento protocolar.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 Nio Games e Informática. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-pergunta').forEach(p => {
+            p.addEventListener('click', function() {
+                this.parentElement.classList.toggle('ativo');
+            });
+        });
+    </script>
+</body>
+</html>

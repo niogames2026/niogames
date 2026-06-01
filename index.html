@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nio Games e Informática - Assistência Técnica em São Paulo</title>
+    <style>
+        /* ============== VARIÁVEIS DE CORES ============== */
+        :root {
+            --cor-primaria: #1a1a2e;
+            --cor-secundaria: #16213e;
+            --cor-destaque: #e94560;
+            --cor-sucesso: #00d4ff;
+            --cor-fundo: #f0f2f5;
+            --cor-texto: #333333;
+            --cor-texto-claro: #666666;
+            --cor-branco: #ffffff;
+            --cor-cinza: #e8ecf1;
+            --sombra: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --sombra-forte: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ============== RESET GLOBAL ============== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+        }
+
+        /* ============== HEADER/NAVEGAÇÃO ============== */
+        header {
+            background-color: var(--cor-branco);
+            padding: 12px 0;
+            box-shadow: var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* ============== HERO SECTION COM CARROSSEL ============== */
+        .hero {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #0f172a;
+            padding: 0;
+            height: auto;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+        }
+
+        .carousel-slide.active {
+            display: block;
+            animation: fadeIn 0.8s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Indicadores do carrossel */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .carousel-dot.active {
+            background-color: var(--cor-destaque);
+            border-color: var(--cor-destaque);
+            width: 16px;
+            height: 16px;
+        }
+
+        .carousel-dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* BOTÕES FIXOS NO CARROSSEL */
+        .btn-esquerdo {
+            position: absolute;
+            left: 4%;
+            bottom: 2%;
+            z-index: 10;
+        }
+
+        .btn-direito {
+            position: absolute;
+            right: 4%;
+            bottom: 1%;
+            z-index: 10;
+        }
+
+        .hero-buttons-mobile {
+            display: none;
+        }
+
+        /* ============== SEÇÃO DE DIFERENCIAIS ============== */
+        .diferenciais {
+            padding: 60px 20px;
+            background-color: var(--cor-branco);
+        }
+
+        .diferenciais-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .secao-titulo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .secao-titulo h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--cor-primaria);
+        }
+
+        .secao-titulo p {
+            font-size: 16px;
+            color: var(--cor-texto-claro);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--cor-fundo);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+            transition: all 0.3s;
+            border-left: 4px solid var(--cor-destaque);
+        }
+
+        .card:hover {
+            box-shadow: var(--sombra-forte);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--cor-primaria);
+        }
+
+        .card p {
+            color: var(--cor-texto-claro);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* ============== SEÇÃO DE FAQ ============== */
+        .faq {
+            padding: 60px 20px;
+            background-color: var(--cor-branco);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--cor-cinza);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-pergunta {
+            padding: 18px;
+            background-color: var(--cor-fundo);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            color: var(--cor-primaria);
+        }
+
+        .faq-pergunta:hover {
+            background-color: var(--cor-cinza);
+        }
+
+        .faq-icon {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.ativo .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-resposta {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: var(--cor-texto-claro);
+            font-size: 14px;
+        }
+
+        .faq-item.ativo .faq-resposta {
+            padding: 18px;
+            max-height: 500px;
+        }
+
+        /* ============== SEÇÃO DE CTA ============== */
+        .cta-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--cor-destaque) 0%, var(--cor-primaria) 100%);
+            color: var(--cor-branco);
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* ============== SEÇÃO DE CONTATO ============== */
+        .contato {
+            padding: 60px 20px;
+            background-color: var(--cor-branco);
+        }
+
+        .contato-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contato-item {
+            background-color: var(--cor-fundo);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 3px solid var(--cor-destaque);
+        }
+
+        .contato-item-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .contato-item h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--cor-primaria);
+        }
+
+        .contato-item p {
+            color: var(--cor-texto-claro);
+            font-size: 15px;
+            word-break: break-word;
+        }
+
+        .contato-item a {
+            color: var(--cor-destaque);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contato-item a:hover {
+            color: var(--cor-primaria);
+        }
+
+        /* ============== BOTÃO GLOBAL ============== */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--cor-destaque);
+            color: var(--cor-branco);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            background-color: #d73451;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-forte);
+        }
+
+        .btn-secundario {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: var(--cor-branco);
+            border: 2px solid var(--cor-branco);
+        }
+
+        .btn-secundario:hover {
+            background-color: var(--cor-branco);
+            color: var(--cor-primaria);
+        }
+
+        /* ============== FOOTER ============== */
+        footer {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 15px;
+            color: var(--cor-destaque);
+            font-size: 15px;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .footer-col a:hover {
+            color: var(--cor-destaque);
+        }
+
+        .footer-col p {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: transparent !important;
+    border: none;
+    outline: none;
+}
+
+.social-icon:hover,
+.social-icon:focus,
+.social-icon:active {
+    background: transparent !important;
+    outline: none;
+    box-shadow: none;
+}
+
+.social-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: translateY(-4px) scale(1.08);
+}
+
+.assinatura-dev {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #b8b8b8;
+}
+
+.assinatura-dev a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.assinatura-dev a:hover {
+    color: #ffea70;
+    text-shadow: 0 0 8px rgba(255,215,0,0.7);
+}
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* ============== RESPONSIVIDADE ============== */
+        @media (max-width: 860px) {
+            
+            .hero .btn-esquerdo, 
+            .hero .btn-direito {
+                display: none !important;
+            }
+
+            .hero-buttons-mobile {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px 20px;
+                background-color: #0f172a;
+            }
+
+            .hero-buttons-mobile .btn {
+                width: 100%;
+                display: block;
+                box-sizing: border-box;
+            }
+
+            nav ul {
+                gap: 10px;
+                font-size: 13px;
+                justify-content: center;
+                padding: 5px 0;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .secao-titulo h2 {
+                font-size: 26px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contato-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .redes-sociais {
+                justify-content: center;
+            }
+
+            .carousel-indicators {
+                bottom: 10px;
+                gap: 6px;
+            }
+
+            .carousel-dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .carousel-dot.active {
+                width: 14px;
+                height: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">
+                    <img src="https://i.imgur.com/Zbv3wt5.png" alt="Logo">
+                </div>
+                <span>Nio Games</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============== HERO COM CARROSSEL ============== -->
+    <section class="hero" id="home">
+        <div class="carousel-container">
+            <!-- SLIDE 1 -->
+            <div class="carousel-slide active">
+                <img src="https://i.imgur.com/llyOfmK.png" alt="Banner Nio Games 1">
+            </div>
+
+            <!-- SLIDE 2 - EDITE A IMAGEM AQUI -->
+            <div class="carousel-slide">
+                <img src="https://i.imgur.com/llyOfmK.png" alt="Banner Nio Games 2">
+            </div>
+
+            <!-- SLIDE 3 - EDITE A IMAGEM AQUI -->
+            <div class="carousel-slide">
+                <img src="https://i.imgur.com/llyOfmK.png" alt="Banner Nio Games 3">
+            </div>
+
+            <!-- INDICADORES DO CARROSSEL -->
+            <div class="carousel-indicators">
+                <span class="carousel-dot active" onclick="currentSlide(1)"></span>
+                <span class="carousel-dot" onclick="currentSlide(2)"></span>
+                <span class="carousel-dot" onclick="currentSlide(3)"></span>
+            </div>
+
+            <!-- BOTÕES FIXOS -->
+            <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Vim do seu site e gostaria de solicitar um orçamento para uma solução de assistência técnica!" class="btn btn-esquerdo" target="_blank">
+                Solicitar Orçamento
+            </a>
+            
+            <a href="produtos.html" class="btn btn-secundario btn-direito">
+                Conheça Nossos Serviços
+            </a>
+        </div>
+
+        <div class="hero-buttons-mobile">
+            <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Vim do seu site e gostaria de solicitar um orçamento para uma solução de assistência técnica!" class="btn" target="_blank">
+                Solicitar Orçamento
+            </a>
+            <a href="produtos.html" class="btn btn-secundario">
+                Conheça Nossos Serviços
+            </a>
+        </div>
+    </section>
+
+    <section class="diferenciais" id="sobre">
+        <div class="diferenciais-container">
+            <div class="secao-titulo">
+                <h2>Por que nos escolher?</h2>
+                <p>Somos referência em assistência técnica com 4.8 de avaliação no Google</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Atendimento Ágil</h3>
+                    <p>Resolvemos sua solicitação com máxima rapidez, minimizando o tempo de inatividade do seu equipamento.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Garantia</h3>
+                    <p>Todos os nossos serviços possuem garantia completa e suporte técnico especializado.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">👨‍💼</div>
+                    <h3>Profissionais Experientes</h3>
+                    <p>Nossa equipe é qualificada em diversas marcas e modelos de equipamentos.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">💎</div>
+                    <h3>Qualidade Premium</h3>
+                    <p>Usamos apenas peças e procedimentos de alta qualidade em todos os reparos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="faq-container">
+            <div class="secao-titulo">
+                <h2>Perguntas Frequentes</h2>
+                <p>Dúvidas sobre nossos serviços? Encontre as respostas aqui</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>Qual é a garantia dos serviços?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    Todos os serviços realizados possuem garantia de 90 dias contra defeitos relacionados ao reparo. Consulte nossa página de Devoluções e Garantia para mais detalhes.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>Como solicitar um orçamento?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    Você pode entrar em contato conosco por WhatsApp, telefone ou presencialmente. Basta descrever o problema do seu equipamento e faremos um diagnóstico completo.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>Qual é o prazo de atendimento?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    Estamos localizados no centro de São Paulo e atendemos com máxima agilidade. Atendemos presencialmente ou podemos fazer orçamento sem compromisso antes de qualquer serviço.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>Vocês trabalham com qual horário?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    Funcionamos das 10:00 às 18:00, de segunda a sexta-feira. Você pode agendar um atendimento entrando em contato via WhatsApp ou telefone.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <span>Fazem atendimento remoto?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-resposta">
+                    Sim! Para problemas de software, limpeza de vírus e suporte técnico básico, realizamos atendimento remoto com segurança total. Entre em contato para mais informações.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Seu equipamento com problema?</h2>
+            <p>Envie uma mensagem agora e receba um orçamento sem compromisso</p>
+            <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de solicitar um orçamento para assistência técnica." class="btn" target="_blank">Fale Conosco via WhatsApp</a>
+        </div>
+    </section>
+
+    <section class="contato" id="contato">
+        <div class="contato-container">
+            <div class="secao-titulo">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para ajudar com seus problemas técnicos</p>
+            </div>
+
+            <div class="contato-grid">
+                <div class="contato-item">
+                    <div class="contato-item-icon">📱</div>
+                    <h3>WhatsApp</h3>
+                    <a href="https://api.whatsapp.com/send/?phone=5511962318906" target="_blank">(11) 96231-8906</a>
+                </div>
+
+                <div class="contato-item">
+                    <div class="contato-item-icon">📞</div>
+                    <h3>Telefone</h3>
+                    <p>(11) 96231-8906</p>
+                </div>
+
+                <div class="contato-item">
+                    <div class="contato-item-icon">📍</div>
+                    <h3>Localização</h3>
+                    <p>Viaduto Santa Ifigênia, 66<br>Sala 153 - São Paulo, SP</p>
+                </div>
+
+                <div class="contato-item">
+                    <div class="contato-item-icon">🕐</div>
+                    <h3>Horário</h3>
+                    <p>Seg-Sex: 10:00-18:00<br>Aberto agora</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>NAVEGAÇÃO</h4>
+                    <a href="index.html">Início</a>
+                    <a href="sobre.html">Sobre Nós</a>
+                    <a href="produtos.html">Serviços</a>
+                    <a href="contato.html">Contato</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>INFORMAÇÕES</h4>
+                    <a href="privacidade.html">Política de Privacidade</a>
+                    <a href="termos-uso.html">Termos de Uso</a>
+                    <a href="devolucoes.html">Garantia e Devoluções</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>CONTATO</h4>
+                    <p>Viaduto Santa Ifigênia, 66<br>Sala 153, São Paulo - SP<br>01033-050</p>
+                    <a href="tel:+5511962318906">(11) 96231-8906</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>SIGA-NOS</h4>
+                    <div class="redes-sociais">
+
+    <a href="https://www.google.com/search?q=nio+informática"
+       class="social-icon"
+       title="Google"
+       target="_blank">
+
+        <img src="https://imgur.com/rKHAbNy.png" alt="Google">
+
+    </a>
+
+    <a href="#"
+       class="social-icon"
+       title="Facebook">
+
+        <img src="https://imgur.com/xhymP6O.png" alt="Facebook">
+
+    </a>
+
+    <a href="https://www.instagram.com/niogamesinformatica/"
+       class="social-icon"
+       title="Instagram"
+       target="_blank">
+
+        <img src="https://imgur.com/lDCNXBD.png" alt="Instagram">
+
+    </a>
+
+    <a href="https://www.tiktok.com/@nioinfirmatica"
+       class="social-icon"
+       title="TikTok"
+       target="_blank">
+
+        <img src="https://imgur.com/LAgPnll.png" alt="TikTok">
+
+    </a>
+<a href="https://www.youtube.com/@NIOINFORMATICA"
+       class="social-icon"
+       title="Youtube"
+       target="_blank">
+
+        <img src="https://imgur.com/mxS7OD0.png" alt="Youtube">
+
+    </a>
+
+</div>
+<div class="assinatura-dev">
+    © Website by
+    <a href="https://wa.me/5511973810131" target="_blank">
+        AlphyynaDEV
+    </a>
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nio Games e Informática - Assistência Técnica. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ============== CARROSSEL AUTOMÁTICO ==============
+        let currentSlideIndex = 1;
+        let slideInterval;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            if (n > slides.length) {
+                currentSlideIndex = 1;
+            }
+            if (n < 1) {
+                currentSlideIndex = slides.length;
+            }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[currentSlideIndex - 1].classList.add('active');
+            dots[currentSlideIndex - 1].classList.add('active');
+        }
+
+        function currentSlide(n) {
+            clearInterval(slideInterval);
+            currentSlideIndex = n;
+            showSlide(currentSlideIndex);
+            autoSlide();
+        }
+
+        function autoSlide() {
+            slideInterval = setInterval(() => {
+                currentSlideIndex++;
+                showSlide(currentSlideIndex);
+            }, 5000); // Troca a imagem a cada 5 segundos
+        }
+
+        // Inicia o carrossel automaticamente
+        showSlide(currentSlideIndex);
+        autoSlide();
+
+        // ============== FAQ SANFONA ==============
+        document.querySelectorAll('.faq-pergunta').forEach(pergunta => {
+            pergunta.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('ativo');
+            });
+        });
+    </script>
+
+</body>
+</html>
