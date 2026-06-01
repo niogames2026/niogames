@@ -38,7 +38,190 @@
 
         footer { background-color: var(--cor-primaria); color: var(--cor-branco); padding: 40px 20px 20px; margin-top: 60px; }
         .footer-container { max-width: 1200px; margin: 0 auto 30px; text-align: center; }
-    </style>
+    
+        /* ===== FOOTER REDES SOCIAIS ===== */
+        footer {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 15px;
+            color: var(--cor-destaque);
+            font-size: 15px;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .footer-col a:hover {
+            color: var(--cor-destaque);
+        }
+
+        .footer-col p {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: transparent !important;
+    border: none;
+    outline: none;
+}
+
+.social-icon:hover,
+.social-icon:focus,
+.social-icon:active {
+    background: transparent !important;
+    outline: none;
+    box-shadow: none;
+}
+
+.social-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: translateY(-4px) scale(1.08);
+}
+
+.assinatura-dev {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #b8b8b8;
+}
+
+.assinatura-dev a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.assinatura-dev a:hover {
+    color: #ffea70;
+    text-shadow: 0 0 8px rgba(255,215,0,0.7);
+}
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* ============== RESPONSIVIDADE ============== */
+        @media (max-width: 860px) {
+            
+            .hero .btn-esquerdo, 
+            .hero .btn-direito {
+                display: none !important;
+            }
+
+            .hero-buttons-mobile {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px 20px;
+                background-color: #0f172a;
+            }
+
+            .hero-buttons-mobile .btn {
+                width: 100%;
+                display: block;
+                box-sizing: border-box;
+            }
+
+            nav ul {
+                gap: 10px;
+                font-size: 13px;
+                justify-content: center;
+                padding: 5px 0;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .secao-titulo h2 {
+                font-size: 26px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contato-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .redes-sociais {
+                justify-content: center;
+            }
+
+            .carousel-indicators {
+                bottom: 10px;
+                gap: 6px;
+            }
+
+            .carousel-dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .carousel-dot.active {
+                width: 14px;
+                height: 14px;
+            }
+        }
+</style>
 </head>
 <body>
 
@@ -79,7 +262,88 @@
 
     <footer>
         <div class="footer-container">
-            <p>&copy; 2026 Nio Games e Informática. Todos os direitos reservados.</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>NAVEGAÇÃO</h4>
+                    <a href="index.html">Início</a>
+                    <a href="sobre.html">Sobre Nós</a>
+                    <a href="produtos.html">Serviços</a>
+                    <a href="contato.html">Contato</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>INFORMAÇÕES</h4>
+                    <a href="privacidade.html">Política de Privacidade</a>
+                    <a href="termos-uso.html">Termos de Uso</a>
+                    <a href="devolucoes.html">Garantia e Devoluções</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>CONTATO</h4>
+                    <p>Viaduto Santa Ifigênia, 66<br>Sala 153, São Paulo - SP<br>01033-050</p>
+                    <a href="tel:+5511962318906">(11) 96231-8906</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>SIGA-NOS</h4>
+                    <div class="redes-sociais">
+
+    <a href="https://www.google.com/search?q=nio+informática"
+       class="social-icon"
+       title="Google"
+       target="_blank">
+
+        <img src="https://imgur.com/rKHAbNy.png" alt="Google">
+
+    </a>
+
+    <a href="#"
+       class="social-icon"
+       title="Facebook">
+
+        <img src="https://imgur.com/xhymP6O.png" alt="Facebook">
+
+    </a>
+
+    <a href="https://www.instagram.com/niogamesinformatica/"
+       class="social-icon"
+       title="Instagram"
+       target="_blank">
+
+        <img src="https://imgur.com/lDCNXBD.png" alt="Instagram">
+
+    </a>
+
+    <a href="https://www.tiktok.com/@nioinfirmatica"
+       class="social-icon"
+       title="TikTok"
+       target="_blank">
+
+        <img src="https://imgur.com/LAgPnll.png" alt="TikTok">
+
+    </a>
+<a href="https://www.youtube.com/@NIOINFORMATICA"
+       class="social-icon"
+       title="Youtube"
+       target="_blank">
+
+        <img src="https://imgur.com/mxS7OD0.png" alt="Youtube">
+
+    </a>
+
+</div>
+<div class="assinatura-dev">
+    © Website by
+    <a href="https://wa.me/5511973810131" target="_blank">
+        AlphyynaDEV
+    </a>
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nio Games e Informática - Assistência Técnica. Todos os direitos reservados.</p>
         </div>
     </footer>
 

@@ -1,4 +1,187 @@
-<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="icon" type="image/png" href="https://i.imgur.com/RzBqWq9.png"> <title>Contato - Nio Games e Informática</title> <style> :root{ --cor-primaria:#1a1a2e; --cor-secundaria:#16213e; --cor-destaque:#e94560; --cor-fundo:#f0f2f5; --cor-texto:#333; --cor-texto-claro:#666; --cor-branco:#fff; --sombra:0 2px 8px rgba(0,0,0,.1); } *{ margin:0; padding:0; box-sizing:border-box; } body{ font-family:'Segoe UI',sans-serif; background:var(--cor-fundo); color:var(--cor-texto); } header{ background:#fff; padding:12px 0; box-shadow:var(--sombra); } .header-container{ max-width:1200px; margin:auto; padding:0 20px; display:flex; justify-content:space-between; align-items:center; } .logo{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--cor-primaria); font-size:20px; font-weight:700; } .logo img{ width:45px; height:45px; } .banner{ background:linear-gradient(135deg,var(--cor-primaria),var(--cor-secundaria)); color:white; text-align:center; padding:70px 20px; } .banner h1{ font-size:38px; margin-bottom:10px; } .banner p{ opacity:.95; } .container{ max-width:1200px; margin:50px auto; padding:0 20px; } .contato-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:30px; } .card{ background:#fff; padding:30px; border-radius:10px; box-shadow:var(--sombra); } .card h2{ color:var(--cor-primaria); margin-bottom:20px; } .item{ margin-bottom:18px; line-height:1.8; color:var(--cor-texto-claro); } .btn-whatsapp{ display:block; text-align:center; background:#25d366; color:white; text-decoration:none; padding:15px; border-radius:6px; font-weight:600; margin-top:20px; } .btn-whatsapp:hover{ opacity:.9; } .cta-box{ display:flex; flex-direction:column; justify-content:center; text-align:center; background:#eef2f7; } .cta-box h2{ margin-bottom:15px; } .cta-box p{ color:var(--cor-texto-claro); line-height:1.8; } footer{ background:var(--cor-primaria); color:white; padding:40px 20px 20px; margin-top:60px; } .footer-container{ max-width:1200px; margin:auto; } .footer-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:30px; } .footer-col h4{ color:var(--cor-destaque); margin-bottom:15px; } .footer-col a{ display:block; color:#ccc; text-decoration:none; margin-bottom:8px; } .footer-col a:hover{ color:var(--cor-destaque); } .footer-col p{ color:#ccc; } .footer-bottom{ border-top:1px solid rgba(255,255,255,.15); margin-top:25px; padding-top:20px; text-align:center; color:#999; font-size:13px; } @media(max-width:768px){ .banner h1{ font-size:28px; } } </style> </head> <body> <header> <div class="header-container"> <a href="index.html" class="logo"> <img src="https://i.imgur.com/Zbv3wt5.png" alt="Logo"> <span>Nio Games</span> </a> </div> </header> <section class="banner"> <h1>Entre em Contato</h1> <p>Estamos prontos para ajudar você com assistência técnica, orçamentos e suporte especializado.</p> </section> <div class="container"> <div class="contato-grid"> <div class="card"> <h2>Informações de Contato</h2> <div class="item"> 📍 <strong>Endereço:</strong><br> Viaduto Santa Ifigênia, 66<br> Sala 153 - São Paulo/SP<br> CEP 01033-050 </div> <div class="item"> 📱 <strong>WhatsApp:</strong><br> (11) 96231-8906 </div> <div class="item"> 📞 <strong>Telefone:</strong><br> (11) 96231-8906 </div> <div class="item"> 🕒 <strong>Horário:</strong><br> Segunda a Sexta-feira<br> 10h às 18h </div> <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Vim através do site da Nio Games e gostaria de atendimento." class="btn-whatsapp" target="_blank"> Falar pelo WhatsApp </a> </div> <div class="card cta-box"> <h2>Atendimento Rápido</h2> <p> Nossa equipe técnica atende diariamente clientes de toda a região de São Paulo. Entre em contato para solicitar orçamento, suporte técnico ou informações sobre nossos serviços. </p> <p style="margin-top:20px;"> ⚡ Resposta rápida<br> 🎮 Especialistas em Games<br> 💻 Assistência em Informática<br> 🛡️ Serviços com Garantia </p> </div> </div> </div> <section style="max-width:1200px; margin:0 auto 50px; padding:0 20px;">
+<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="icon" type="image/png" href="https://i.imgur.com/RzBqWq9.png"> <title>Contato - Nio Games e Informática</title> <style> :root{ --cor-primaria:#1a1a2e; --cor-secundaria:#16213e; --cor-destaque:#e94560; --cor-fundo:#f0f2f5; --cor-texto:#333; --cor-texto-claro:#666; --cor-branco:#fff; --sombra:0 2px 8px rgba(0,0,0,.1); } *{ margin:0; padding:0; box-sizing:border-box; } body{ font-family:'Segoe UI',sans-serif; background:var(--cor-fundo); color:var(--cor-texto); } header{ background:#fff; padding:12px 0; box-shadow:var(--sombra); } .header-container{ max-width:1200px; margin:auto; padding:0 20px; display:flex; justify-content:space-between; align-items:center; } .logo{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--cor-primaria); font-size:20px; font-weight:700; } .logo img{ width:45px; height:45px; } .banner{ background:linear-gradient(135deg,var(--cor-primaria),var(--cor-secundaria)); color:white; text-align:center; padding:70px 20px; } .banner h1{ font-size:38px; margin-bottom:10px; } .banner p{ opacity:.95; } .container{ max-width:1200px; margin:50px auto; padding:0 20px; } .contato-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:30px; } .card{ background:#fff; padding:30px; border-radius:10px; box-shadow:var(--sombra); } .card h2{ color:var(--cor-primaria); margin-bottom:20px; } .item{ margin-bottom:18px; line-height:1.8; color:var(--cor-texto-claro); } .btn-whatsapp{ display:block; text-align:center; background:#25d366; color:white; text-decoration:none; padding:15px; border-radius:6px; font-weight:600; margin-top:20px; } .btn-whatsapp:hover{ opacity:.9; } .cta-box{ display:flex; flex-direction:column; justify-content:center; text-align:center; background:#eef2f7; } .cta-box h2{ margin-bottom:15px; } .cta-box p{ color:var(--cor-texto-claro); line-height:1.8; } footer{ background:var(--cor-primaria); color:white; padding:40px 20px 20px; margin-top:60px; } .footer-container{ max-width:1200px; margin:auto; } .footer-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:30px; } .footer-col h4{ color:var(--cor-destaque); margin-bottom:15px; } .footer-col a{ display:block; color:#ccc; text-decoration:none; margin-bottom:8px; } .footer-col a:hover{ color:var(--cor-destaque); } .footer-col p{ color:#ccc; } .footer-bottom{ border-top:1px solid rgba(255,255,255,.15); margin-top:25px; padding-top:20px; text-align:center; color:#999; font-size:13px; } @media(max-width:768px){ .banner h1{ font-size:28px; } } 
+        /* ===== FOOTER REDES SOCIAIS ===== */
+        footer {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 15px;
+            color: var(--cor-destaque);
+            font-size: 15px;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .footer-col a:hover {
+            color: var(--cor-destaque);
+        }
+
+        .footer-col p {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .redes-sociais {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: transparent !important;
+    border: none;
+    outline: none;
+}
+
+.social-icon:hover,
+.social-icon:focus,
+.social-icon:active {
+    background: transparent !important;
+    outline: none;
+    box-shadow: none;
+}
+
+.social-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: translateY(-4px) scale(1.08);
+}
+
+.assinatura-dev {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #b8b8b8;
+}
+
+.assinatura-dev a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.assinatura-dev a:hover {
+    color: #ffea70;
+    text-shadow: 0 0 8px rgba(255,215,0,0.7);
+}
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* ============== RESPONSIVIDADE ============== */
+        @media (max-width: 860px) {
+            
+            .hero .btn-esquerdo, 
+            .hero .btn-direito {
+                display: none !important;
+            }
+
+            .hero-buttons-mobile {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px 20px;
+                background-color: #0f172a;
+            }
+
+            .hero-buttons-mobile .btn {
+                width: 100%;
+                display: block;
+                box-sizing: border-box;
+            }
+
+            nav ul {
+                gap: 10px;
+                font-size: 13px;
+                justify-content: center;
+                padding: 5px 0;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .secao-titulo h2 {
+                font-size: 26px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contato-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .redes-sociais {
+                justify-content: center;
+            }
+
+            .carousel-indicators {
+                bottom: 10px;
+                gap: 6px;
+            }
+
+            .carousel-dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .carousel-dot.active {
+                width: 14px;
+                height: 14px;
+            }
+        }
+</style> </head> <body> <header> <div class="header-container"> <a href="index.html" class="logo"> <img src="https://i.imgur.com/Zbv3wt5.png" alt="Logo"> <span>Nio Games</span> </a> </div> </header> <section class="banner"> <h1>Entre em Contato</h1> <p>Estamos prontos para ajudar você com assistência técnica, orçamentos e suporte especializado.</p> </section> <div class="container"> <div class="contato-grid"> <div class="card"> <h2>Informações de Contato</h2> <div class="item"> 📍 <strong>Endereço:</strong><br> Viaduto Santa Ifigênia, 66<br> Sala 153 - São Paulo/SP<br> CEP 01033-050 </div> <div class="item"> 📱 <strong>WhatsApp:</strong><br> (11) 96231-8906 </div> <div class="item"> 📞 <strong>Telefone:</strong><br> (11) 96231-8906 </div> <div class="item"> 🕒 <strong>Horário:</strong><br> Segunda a Sexta-feira<br> 10h às 18h </div> <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Vim através do site da Nio Games e gostaria de atendimento." class="btn-whatsapp" target="_blank"> Falar pelo WhatsApp </a> </div> <div class="card cta-box"> <h2>Atendimento Rápido</h2> <p> Nossa equipe técnica atende diariamente clientes de toda a região de São Paulo. Entre em contato para solicitar orçamento, suporte técnico ou informações sobre nossos serviços. </p> <p style="margin-top:20px;"> ⚡ Resposta rápida<br> 🎮 Especialistas em Games<br> 💻 Assistência em Informática<br> 🛡️ Serviços com Garantia </p> </div> </div> </div> <section style="max-width:1200px; margin:0 auto 50px; padding:0 20px;">
     <div class="card">
         <h2 style="margin-bottom:20px;">📍 Nossa Localização</h2>
 
@@ -19,4 +202,89 @@
             CEP 01033-050
         </p>
     </div>
-</section> <footer> <div class="footer-container"> <div class="footer-grid"> <div class="footer-col"> <h4>NAVEGAÇÃO</h4> <a href="index.html">Início</a> <a href="sobre.html">Sobre Nós</a> <a href="produtos.html">Serviços</a> <a href="contato.html">Contato</a> <a href="trabalhe-conosco.html">Trabalhe Conosco</a> </div> <div class="footer-col"> <h4>INFORMAÇÕES</h4> <a href="privacidade.html">Política de Privacidade</a> <a href="termos-uso.html">Termos de Uso</a> <a href="devolucoes.html">Garantia e Devoluções</a> </div> <div class="footer-col"> <h4>CONTATO</h4> <p> Viaduto Santa Ifigênia, 66<br> Sala 153 - São Paulo/SP<br> CEP 01033-050 </p> <p>(11) 96231-8906</p> </div> </div> <div class="footer-bottom"> © 2026 Nio Games e Informática. Todos os direitos reservados. </div> </div> </footer> </body> </html>
+</section> <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>NAVEGAÇÃO</h4>
+                    <a href="index.html">Início</a>
+                    <a href="sobre.html">Sobre Nós</a>
+                    <a href="produtos.html">Serviços</a>
+                    <a href="contato.html">Contato</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>INFORMAÇÕES</h4>
+                    <a href="privacidade.html">Política de Privacidade</a>
+                    <a href="termos-uso.html">Termos de Uso</a>
+                    <a href="devolucoes.html">Garantia e Devoluções</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>CONTATO</h4>
+                    <p>Viaduto Santa Ifigênia, 66<br>Sala 153, São Paulo - SP<br>01033-050</p>
+                    <a href="tel:+5511962318906">(11) 96231-8906</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>SIGA-NOS</h4>
+                    <div class="redes-sociais">
+
+    <a href="https://www.google.com/search?q=nio+informática"
+       class="social-icon"
+       title="Google"
+       target="_blank">
+
+        <img src="https://imgur.com/rKHAbNy.png" alt="Google">
+
+    </a>
+
+    <a href="#"
+       class="social-icon"
+       title="Facebook">
+
+        <img src="https://imgur.com/xhymP6O.png" alt="Facebook">
+
+    </a>
+
+    <a href="https://www.instagram.com/niogamesinformatica/"
+       class="social-icon"
+       title="Instagram"
+       target="_blank">
+
+        <img src="https://imgur.com/lDCNXBD.png" alt="Instagram">
+
+    </a>
+
+    <a href="https://www.tiktok.com/@nioinfirmatica"
+       class="social-icon"
+       title="TikTok"
+       target="_blank">
+
+        <img src="https://imgur.com/LAgPnll.png" alt="TikTok">
+
+    </a>
+<a href="https://www.youtube.com/@NIOINFORMATICA"
+       class="social-icon"
+       title="Youtube"
+       target="_blank">
+
+        <img src="https://imgur.com/mxS7OD0.png" alt="Youtube">
+
+    </a>
+
+</div>
+<div class="assinatura-dev">
+    © Website by
+    <a href="https://wa.me/5511973810131" target="_blank">
+        AlphyynaDEV
+    </a>
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nio Games e Informática - Assistência Técnica. Todos os direitos reservados.</p>
+        </div>
+    </footer> </body> </html>
