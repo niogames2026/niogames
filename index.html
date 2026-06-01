@@ -47,26 +47,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin: 20px auto 40px auto;
 }
 
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-@media (max-width: 900px) {
-.reviews-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 .review-card {
+    max-width: 850px;
+    margin: 0 auto;
     background: var(--cor-branco);
-    padding: 25px;
-    border-radius: 12px;
+    padding: 35px;
+    border-radius: 15px;
     box-shadow: var(--sombra);
     text-align: left;
+}
+        
+.review-item {
+    padding: 10px 0;
+}
+
+.review-item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.review-card hr {
+    border: none;
+    border-top: 1px solid #e8ecf1;
+    margin: 25px 0;
 }
 
 .review-card .stars {
@@ -813,20 +815,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
 
     <div class="review-card">
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <h4>Andre Rogerio Rd</h4>
-    <p>
-        Ótimo trabalho e custo benefício
-Os cara são bons no que fazem.
-    </p>
-</div>
-    
-<div class="review-card">
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <h4>Adeilson Borges</h4>
-    <p>
-        Profissionais atenciosos, gostei do resultado final do serviço prestado! Preço um pouco acima da média porém a qualidade e a garantia compenção sem dúvidas!.
-    </p>
+
+    <div class="review-item">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <h4>Andre Rogerio Rd</h4>
+        <p>
+            Ótimo trabalho e custo benefício.
+            Os cara são bons no que fazem.
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="review-item">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <h4>Adeilson Borges</h4>
+        <p>
+            Profissionais atenciosos, gostei do resultado final do serviço prestado!
+            Preço um pouco acima da média porém a qualidade e a garantia compensam sem dúvidas.
+        </p>
+    </div>
+
 </div>
 
 </section>
