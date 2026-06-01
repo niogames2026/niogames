@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nós - Nio Games e Informática</title>
+    <title>Nossos Serviços - Nio Games e Informática</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
         /* ============== VARIÁVEIS E RESET ============== */
         :root {
             --cor-primaria: #1a1a2e;
             --cor-secundaria: #16213e;
             --cor-destaque: #e94560;
-            --cor-sucesso: #00d4ff;
             --cor-fundo: #f0f2f5;
             --cor-texto: #333333;
             --cor-texto-claro: #666666;
@@ -20,186 +21,227 @@
             --sombra-forte: 0 4px 16px rgba(0, 0, 0, 0.15);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: var(--cor-texto); background-color: var(--cor-fundo); }
+        body { font-family: 'Segoe UI', sans-serif; color: var(--cor-texto); background-color: var(--cor-fundo); }
 
         /* ============== HEADER ============== */
         header { background-color: var(--cor-branco); padding: 12px 0; box-shadow: var(--sombra); position: sticky; top: 0; z-index: 100; }
         .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .logo { font-size: 20px; font-weight: 700; color: var(--cor-primaria); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .logo-img { width: 35px; height: 35px; background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque)); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .logo { font-size: 20px; font-weight: 700; color: var(--cor-primaria); text-decoration: none; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .logo-img { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; }
         .logo-img img { width: 100%; height: 100%; object-fit: contain; }
-        nav ul { display: flex; list-style: none; gap: 25px; }
-        nav a { color: var(--cor-texto); text-decoration: none; font-weight: 500; font-size: 14px; transition: color 0.3s; }
+        nav ul { display: flex; list-style: none; gap: 25px; flex-wrap: wrap; }
+        nav a { color: var(--cor-texto); text-decoration: none; font-weight: 500; font-size: 14px; cursor: pointer; transition: color 0.3s; }
         nav a:hover, nav a.active { color: var(--cor-destaque); }
 
-        /* ============== CONTEÚDO INSTITUCIONAL ============== */
+        /* ============== CONTEÚDO ============== */
         .banner-interna { background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%); color: white; padding: 60px 20px; text-align: center; }
-        .banner-interna h1 { font-size: 36px; margin-bottom: 10px; }
         
-        .sobre-section { padding: 60px 20px; background-color: var(--cor-branco); }
-        .container-sobre { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .sobre-texto h2 { color: var(--cor-primaria); margin-bottom: 20px; font-size: 28px; }
-        .sobre-texto p { color: var(--cor-texto-claro); margin-bottom: 15px; font-size: 16px; }
-        .sobre-imagem img { width: 100%; border-radius: 10px; box-shadow: var(--sombra-forte); }
+        /* ============== SEÇÃO DO CARROSSEL ADICIONAL ============== */
+        .vitrine-produtos-venda { max-width: 1200px; margin: 40px auto 10px; padding: 0 20px; }
+        .secao-titulo-carrossel { text-align: center; margin-bottom: 20px; }
+        .secao-titulo-carrossel h2 { font-size: 28px; color: var(--cor-primaria); margin-bottom: 8px; }
+        .secao-titulo-carrossel p { color: var(--cor-texto-claro); font-size: 15px; }
+        
+        .swiper { width: 100%; padding: 15px 0 45px 0 !important; }
+        .swiper-slide { height: auto; display: flex; }
+        
+        /* Cards do Carrossel */
+        .vitrine-card { background: var(--cor-branco); border-radius: 10px; overflow: hidden; box-shadow: var(--sombra); display: flex; flex-direction: column; width: 100%; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--cor-cinza); }
+        .vitrine-card:hover { transform: translateY(-4px); box-shadow: var(--sombra-forte); }
+        
+        .vitrine-img-box { background-color: var(--cor-primaria); width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .vitrine-img-box::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(45deg, rgba(233,69,96,0.15) 0%, rgba(26,26,46,0.5) 100%); z-index: 1; }
+        .vitrine-img-box span { position: relative; z-index: 2; font-size: 55px; }
 
-        .valores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        .valor-card { background-color: var(--cor-branco); padding: 30px; border-radius: 8px; box-shadow: var(--sombra); text-align: center; border-top: 4px solid var(--cor-destaque); }
-        .valor-card h3 { color: var(--cor-primaria); margin-bottom: 10px; }
-        .valor-card p { color: var(--cor-texto-claro); font-size: 14px; }
+        .vitrine-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .vitrine-info h3 { color: var(--cor-primaria); font-size: 18px; margin-bottom: 8px; font-weight: 600; }
+        .vitrine-info .tag-categoria { display: inline-block; background-color: var(--cor-cinza); color: var(--cor-primaria); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 50px; width: fit-content; margin-bottom: 10px; text-transform: uppercase; }
+        .vitrine-info p { color: var(--cor-texto-claro); font-size: 13px; line-height: 1.5; margin-bottom: 15px; }
+        .vitrine-preco { font-size: 18px; font-weight: 700; color: var(--cor-destaque); margin-bottom: 15px; display: flex; flex-direction: column; }
+        .vitrine-preco small { font-size: 11px; color: var(--cor-texto-claro); font-weight: normal; }
+        
+        .swiper-button-next, .swiper-button-prev { color: var(--cor-destaque) !important; transform: scale(0.65); }
+        .swiper-pagination-bullet-active { background: var(--cor-destaque) !important; }
 
-        /* ============== BOTÃO GLOBAL ============== */
-        .btn { display: inline-block; padding: 14px 35px; background-color: var(--cor-destaque); color: var(--cor-branco); text-decoration: none; border-radius: 6px; font-weight: 600; transition: all 0.3s; border: none; cursor: pointer; text-align: center; }
-        .btn:hover { background-color: #d73451; transform: translateY(-2px); }
+        /* ============== GRID DE SERVIÇOS ORIGINAIS ============== */
+        .produtos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 40px auto 50px; padding: 0 20px; }
+        .produto-card { background-color: var(--cor-branco); border-radius: 10px; overflow: hidden; box-shadow: var(--sombra); display: flex; flex-direction: column; justify-content: space-between; border-bottom: 4px solid var(--cor-cinza); transition: border-color 0.3s; }
+        .produto-card:hover { border-color: var(--cor-destaque); }
+        .produto-info { padding: 25px; }
+        .produto-info h3 { color: var(--cor-primaria); font-size: 20px; margin-bottom: 10px; }
+        .produto-info p { color: var(--cor-texto-claro); font-size: 14px; margin-bottom: 20px; }
+        
+        .btn-solicitar { display: block; text-align: center; padding: 12px; background-color: var(--cor-primaria); color: white; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background 0.3s; }
+        .btn-solicitar:hover { background-color: var(--cor-destaque); }
 
         /* ============== FOOTER ============== */
-        footer { background-color: var(--cor-primaria); color: var(--cor-branco); padding: 40px 20px 20px; margin-top: 60px; }
+        footer { background-color: var(--cor-primaria); color: var(--cor-branco); padding: 40px 20px 20px; }
         .footer-container { max-width: 1200px; margin: 0 auto 30px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .footer-col h4 { margin-bottom: 15px; color: var(--cor-destaque); font-size: 15px; }
-        .footer-col a { color: #ccc; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px; }
+        .footer-col h4 { margin-bottom: 15px; color: var(--cor-destaque); }
+        .footer-col a { color: #ccc; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px; cursor: pointer; }
         .footer-col a:hover { color: var(--cor-destaque); }
-        .footer-col p { color: #ccc; font-size: 14px; line-height: 1.8; }
-        .redes-sociais { display: flex; gap: 12px; margin-top: 10px; }
-        .social-icon { width: 36px; height: 36px; background-color: var(--cor-destaque); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
         .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 20px; text-align: center; color: #999; font-size: 13px; }
 
+        /* ============== RESPONSIVIDADE ============== */
         @media (max-width: 768px) {
-            .container-sobre { grid-template-columns: 1fr; text-align: center; }
-            nav ul { gap: 15px; }
+            .header-container { flex-direction: column; gap: 12px; text-align: center; }
+            nav ul { justify-content: center; gap: 15px; }
+            .banner-interna h1 { font-size: 26px; }
+            .secao-titulo-carrossel h2 { font-size: 24px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
         }
-		.redes-sociais {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 12px !important;
-    flex-wrap: nowrap !important;
-}
-
-.redes-sociais .social-icon {
-    display: flex !important;
-    width: 36px;
-    height: 36px;
-    margin: 0 !important;
-    padding: 0 !important;
-    flex-shrink: 0;
-}
-
-.redes-sociais .social-icon img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-}
-		
-		.social-icon {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    background: transparent !important;
-    border: none;
-    outline: none;
-}
-
-.social-icon:hover,
-.social-icon:focus,
-.social-icon:active {
-    background: transparent !important;
-    outline: none;
-    box-shadow: none;
-}
-
-.social-icon img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.social-icon:hover img {
-    transform: translateY(-4px) scale(1.08);
-}
-
-.assinatura-dev {
-    margin-top: 12px;
-    font-size: 13px;
-    color: #b8b8b8;
-}
-
-.assinatura-dev a {
-    color: #FFD700;
-    text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-.assinatura-dev a:hover {
-    color: #ffea70;
-    text-shadow: 0 0 8px rgba(255,215,0,0.7);
-}
     </style>
 </head>
 <body>
 
     <header>
         <div class="header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-img"><img src="https://i.imgur.com/Zbv3wt5.png" alt="Logo"></div>
+            <a href="https://sites.google.com/view/nioinfo/in%C3%ADcio" class="logo SameTabLink">
+                <div class="logo-img">
+                    <img src="https://i.imgur.com/Zbv3wt5.png" alt="Logo">
+                </div>
                 <span>Nio Games</span>
             </a>
             <nav>
                 <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="sobre.html" class="active">Sobre</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="https://sites.google.com/view/nioinfo/in%C3%ADcio" class="SameTabLink">Início</a></li>
+                    <li><a href="https://sites.google.com/view/nioinfo/in%C3%ADcio/sobre" class="SameTabLink">Sobre</a></li>
+                    <li><a href="https://sites.google.com/view/nioinfo/in%C3%ADcio/produtos" class="SameTabLink active">Produtos</a></li>
+                    <li><a href="https://sites.google.com/view/nioinfo/in%C3%ADcio/faq" class="SameTabLink">FAQ</a></li>
+                    <li><a href="https://sites.google.com/view/nioinfo/in%C3%ADcio/contato" class="SameTabLink">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <div class="banner-interna">
-        <h1>Conheça a Nio Games e Informática</h1>
-        <p>Especialistas em trazer seu equipamento de volta ao jogo com máxima performance</p>
+        <h1>Nossos Serviços Especializados</h1>
+        <p>Escolha a solução ideal para o seu dispositivo e faça um orçamento rápido</p>
     </div>
 
-    <section class="sobre-section">
-        <div class="container-sobre">
-            <div class="sobre-texto">
-                <h2>Nossa História e Compromisso</h2>
-                <p>Localizados estrategicamente no coração de São Paulo, no tradicional Viaduto Santa Ifigênia, nascemos com a missão de oferecer uma assistência técnica transparente, rápida e altamente qualificada.</p>
-                <p>Sabemos o quanto o seu console ou computador é importante para o seu lazer ou trabalho. Por isso, investimos constantemente em ferramentas de diagnóstico avançadas e treinamento técnico especializado para entregar reparos definitivos com peças de procedência garantida.</p>
+    <section class="vitrine-produtos-venda">
+        <div class="secao-titulo-carrossel">
+            <h2>Acessórios & Equipamentos à Venda</h2>
+            <p>Confira alguns de nossos itens em destaque disponíveis em nossa loja física e virtual</p>
+        </div>
+
+        <div class="swiper meuCarrossel">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">
+                    <div class="vitrine-card">
+                        <div class="vitrine-img-box"><span>🎮</span></div>
+                        <div class="vitrine-info">
+                            <div>
+                                <span class="tag-categoria">Acessórios</span>
+                                <h3>Controles Personalizados</h3>
+                                <p>Controles para PS5, Xbox e Nintendo Switch. Opções originais padrão ou com analógicos Hall Effect sob encomenda.</p>
+                            </div>
+                            <div>
+                                <div class="vitrine-preco"><small>Consulte opções</small>Pronta Entrega</div>
+                                <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de saber mais sobre os Controles à venda que vi no site." class="btn-solicitar" target="_blank">Consultar Valor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="vitrine-card">
+                        <div class="vitrine-img-box"><span>⚡</span></div>
+                        <div class="vitrine-info">
+                            <div>
+                                <span class="tag-categoria">Upgrades</span>
+                                <h3>SSD NVMe M.2 de Alta Velocidade</h3>
+                                <p>Armazenamentos de 1TB e 2TB ideais e homologados para PS5 e Notebooks Gamer de alta performance.</p>
+                            </div>
+                            <div>
+                                <div class="vitrine-preco"><small>Instalação opcional</small>Sob Consulta</div>
+                                <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de saber mais sobre os SSDs NVMe disponíveis para venda." class="btn-solicitar" target="_blank">Consultar Valor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="vitrine-card">
+                        <div class="vitrine-img-box"><span>🔌</span></div>
+                        <div class="vitrine-info">
+                            <div>
+                                <span class="tag-categoria">Cabos</span>
+                                <h3>Cabos Ultra HDMI 2.1</h3>
+                                <p>Extraia o máximo do seu console de nova geração em TVs 4K 120Hz com cabos de blindagem premium.</p>
+                            </div>
+                            <div>
+                                <div class="vitrine-preco"><small>Acessório essencial</small>Pronta Entrega</div>
+                                <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de saber mais sobre os Cabos HDMI 2.1 Premium à venda." class="btn-solicitar" target="_blank">Consultar Valor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="vitrine-card">
+                        <div class="vitrine-img-box"><span>🕹️</span></div>
+                        <div class="vitrine-info">
+                            <div>
+                                <span class="tag-categoria">Consoles</span>
+                                <h3>Videogames Revisados</h3>
+                                <p>Consoles seminovos revisados em laboratório, com troca preventiva de pasta térmica e garantia total de balcão.</p>
+                            </div>
+                            <div>
+                                <div class="vitrine-preco"><small>Estoque rotativo</small>Com Garantia</div>
+                                <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de receber a lista de Consoles Revisados disponíveis para venda." class="btn-solicitar" target="_blank">Ver Modelos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="sobre-imagem">
-                <img src="https://i.imgur.com/llyOfmK.png" alt="Laboratório Técnico Nio Games">
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <section class="produtos-grid">
+        <div class="produto-card">
+            <div class="produto-info">
+                <h3>🎮 Manutenção de PlayStation 5 e Xbox Series X/S</h3>
+                <p>Limpeza completa com troca de metal líquido / pasta térmica premium, reparo de fontes, troca de conectores HDMI e conserto de leitores de disco.</p>
+                <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de consultar disponibilidade e fazer um orçamento para Manutenção de Consoles de Nova Geração." class="btn-solicitar">Consultar Disponibilidade</a>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-info">
+                <h3>🕹️ Reparo de Controles (Drift e Botões)</h3>
+                <p>Conserte o analógico puxando do seu DualSense, controle de Xbox ou Nintendo Switch. Troca de analógicos 3D mecânicos ou Hall Effect (anti-drift).</p>
+                <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de consultar disponibilidade e fazer um orçamento para Manutenção de Controles." class="btn-solicitar">Consultar Disponibilidade</a>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-info">
+                <h3>💻 Assistência Avançada em Notebooks e PCs</h3>
+                <p>Formatação, remoção de vírus, recuperação de carcaças e dobradiças quebradas, upgrade de SSD NVMe e memória RAM para deixar seu PC ultra rápido.</p>
+                <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de consultar disponibilidade e fazer um orçamento para Manutenção de Computadores/Notebooks." class="btn-solicitar">Consultar Disponibilidade</a>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-info">
+                <h3>🔥 Reparo de Placas-Mãe e Reballing</h3>
+                <p>Soluções complexas de microssoldagem eletrônica, análise de curto-circuito na placa, substituição de chipsets e recondicionamento geral de trilhas.</p>
+                <a href="https://api.whatsapp.com/send/?phone=5511962318906&text=Olá! Gostaria de consultar disponibilidade e fazer um orçamento para Reparo Avançado de Placas eletrônicas." class="btn-solicitar">Consultar Disponibilidade</a>
             </div>
         </div>
     </section>
 
-    <div class="valores-grid">
-        <div class="valor-card">
-            <h3>🎯 Missão</h3>
-            <p>Prestar serviços de reparo em games e informática com excelência técnica, agilidade incomparável e preços justos.</p>
-        </div>
-        <div class="valor-card">
-            <h3>👁️ Visão</h3>
-            <p>Sermos reconhecidos como a melhor e mais confiável referência em assistência técnica multimarcas do centro de São Paulo.</p>
-        </div>
-        <div class="valor-card">
-            <h3>🤝 Valores</h3>
-            <p>Transparência total nos diagnósticos, honestidade, paixão pelo mundo dos games e respeito irrestrito aos nossos clientes.</p>
-        </div>
-    </div>
-
     <footer>
-    <div class="footer-container">
-        <div class="footer-grid">
-
-            <div class="footer-col">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
                     <h4>NAVEGAÇÃO</h4>
                     <a href="index.html">Início</a>
                     <a href="sobre.html">Sobre Nós</a>
@@ -213,90 +255,49 @@
                     <a href="termos-uso.html">Termos de Uso</a>
                     <a href="devolucoes.html">Garantia e Devoluções</a>
                 </div>
-
-            <div class="footer-col">
-                <h4>CONTATO</h4>
-                <p>
-                    Viaduto Santa Ifigênia, 66<br>
-                    Sala 153, São Paulo - SP<br>
-                    01033-050
-                </p>
-
-                <a href="tel:+5511962318906">
-                    (11) 96231-8906
-                </a>
-            </div>
-
-            <div class="footer-col">
-                <h4>SIGA-NOS</h4>
-
-                <div class="redes-sociais">
-
-                    <a href="https://www.google.com/search?q=nio+informática"
-                       class="social-icon"
-                       title="Google"
-                       target="_blank">
-
-                        <img src="https://imgur.com/rKHAbNy.png" alt="Google">
-
-                    </a>
-
-                    <a href="#"
-                       class="social-icon"
-                       title="Facebook">
-
-                        <img src="https://imgur.com/xhymP6O.png" alt="Facebook">
-
-                    </a>
-
-                    <a href="https://www.instagram.com/niogamesinformatica/"
-                       class="social-icon"
-                       title="Instagram"
-                       target="_blank">
-
-                        <img src="https://imgur.com/lDCNXBD.png" alt="Instagram">
-
-                    </a>
-
-                    <a href="https://www.tiktok.com/@nioinfirmatica"
-                       class="social-icon"
-                       title="TikTok"
-                       target="_blank">
-
-                        <img src="https://imgur.com/LAgPnll.png" alt="TikTok">
-
-                    </a>
-
-                    <a href="https://www.youtube.com/@NIOINFORMATICA"
-                       class="social-icon"
-                       title="Youtube"
-                       target="_blank">
-
-                        <img src="https://imgur.com/mxS7OD0.png" alt="Youtube">
-
-                    </a>
-
+                <div class="footer-col">
+                    <h4>CONTATO</h4>
+                    <p>Viaduto Santa Ifigênia, 66<br>Sala 153, São Paulo - SP</p>
                 </div>
-
-                <div class="assinatura-dev">
-                    © Website by
-                    <a href="https://wa.me/5511973810131" target="_blank">
-                        AlphyynaDEV
-                    </a>
-                </div>
-
             </div>
-
         </div>
-    </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nio Games e Informática. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
-    <div class="footer-bottom">
-        <p>
-            &copy; 2026 Nio Games e Informática - Assistência Técnica.
-            Todos os direitos reservados.
-        </p>
-    </div>
-</footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // Inicialização do Carrossel Otimizado
+        const swiper = new Swiper('.meuCarrossel', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            grabCursor: true,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 30 }
+            }
+        });
+
+        // Evento de clique para o Google Sites (Sem travar o iframe na aba principal)
+        document.querySelectorAll('.SameTabLink').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const url = this.getAttribute('href');
+                window.open(url, '_top');
+            });
+        });
+    </script>
 
 </body>
 </html>
