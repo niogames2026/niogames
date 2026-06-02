@@ -720,6 +720,74 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 height: 14px;
             }
         }
+        /* ============== ANTES E DEPOIS ============== */
+
+.cases-section {
+    padding: 60px 20px;
+    background: var(--cor-branco);
+}
+
+.cases-grid {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 25px;
+}
+
+.case-card {
+    background: var(--cor-fundo);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.case-card img {
+    width: 100%;
+    display: block;
+}
+
+.case-info {
+    padding: 20px;
+}
+
+.case-info h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+}
+
+/* ============== VÍDEOS ============== */
+
+.video-section {
+    padding: 60px 20px;
+    background: var(--cor-fundo);
+}
+
+.video-grid {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    gap: 25px;
+}
+
+.video-card {
+    background: var(--cor-branco);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+}
+
+.video-card h3 {
+    padding: 20px;
+    color: var(--cor-primaria);
+}
     </style>
 </head>
 <body>
@@ -869,6 +937,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
 </div>
+
+</section>
+    <section class="cases-section">
+
+    <div class="secao-titulo">
+        <h2>Antes e Depois dos Reparos</h2>
+        <p>Resultados reais realizados pela equipe Nio Games e Informática.</p>
+    </div>
+
+    <div class="cases-grid">
+
+        <div class="case-card">
+            <img src="SUA-IMAGEM-ANTES-DEPOIS-1.jpg" alt="Reparo Playstation">
+            <div class="case-info">
+                <h3>PlayStation 5</h3>
+                <p>Limpeza interna completa e manutenção preventiva.</p>
+            </div>
+        </div>
+
+        <div class="case-card">
+            <img src="SUA-IMAGEM-ANTES-DEPOIS-2.jpg" alt="Reparo Notebook">
+            <div class="case-info">
+                <h3>Notebook Gamer</h3>
+                <p>Troca de componentes e recuperação do desempenho.</p>
+            </div>
+        </div>
+
+        <div class="case-card">
+            <img src="SUA-IMAGEM-ANTES-DEPOIS-3.jpg" alt="Reparo Xbox">
+            <div class="case-info">
+                <h3>Xbox Series</h3>
+                <p>Correção de superaquecimento e limpeza técnica.</p>
+            </div>
+        </div>
+
+    </div>
+        <section class="video-section">
+
+    <div class="secao-titulo">
+        <h2>Acompanhe Nossos Reparos</h2>
+        <p>Veja alguns dos serviços realizados pela nossa equipe.</p>
+    </div>
+
+    <div class="video-grid">
+
+        <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/ID_DO_VIDEO"></iframe>
+            <h3>Reparo de Playstation 5</h3>
+        </div>
+
+        <div class="video-card">
+            <iframe src="https://www.youtube.com/embed/ID_DO_VIDEO"></iframe>
+            <h3>Manutenção em Notebook</h3>
+        </div>
+
+    </div>
 
 </section>
     <section class="faq" id="faq">
